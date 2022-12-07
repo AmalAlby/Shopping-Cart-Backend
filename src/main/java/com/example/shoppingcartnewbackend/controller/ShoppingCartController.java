@@ -1,22 +1,25 @@
 package com.example.shoppingcartnewbackend.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.example.shoppingcartnewbackend.model.Product;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class ShoppingCartController {
 
-    @PostMapping("/addp")
-    public String addproduct(){
+    @CrossOrigin(origins = "*")
+    @PostMapping(path="/addp",consumes ="application/json",produces ="application/json")
+    public String addproduct(@RequestBody Product p){
+        System.out.println(p.getName().toString());
         return "Add product successfull";
     }
 
+    @CrossOrigin(origins ="*")
     @GetMapping("/viewp")
     public String viewproduct(){
         return "View successfull";
     }
 
+    @CrossOrigin(origins = "*")
     @PostMapping("/searchp")
     public String searchproduct(){
         return "Search successfull";
